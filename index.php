@@ -12,12 +12,12 @@
         }
         elseif($_GET['keyword'] == null)
         {
-            $imgURLs = getImageURLs($_GET['category'],$_GET['radio']);
+            $imgURLs = getImageURLs($_GET['category'],$_GET['layout']);
             $imgsToDisplay = getTenRandomImages($imgURLs); 
             $backgroundImage = $imgsToDisplay[array_rand($imgsToDisplay)]; 
         }
         else{
-        $imgURLs = getImageURLs($_GET['keyword'],$_GET['radio']); 
+        $imgURLs = getImageURLs($_GET['keyword'],$_GET['layout']); 
         $imgsToDisplay = getTenRandomImages($imgURLs); 
         // set random background image 
         $backgroundImage = $imgsToDisplay[array_rand($imgsToDisplay)]; 
