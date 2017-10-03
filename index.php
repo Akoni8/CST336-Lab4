@@ -6,11 +6,21 @@
     }
     
     if (isset($_GET['keyword'])) {
-        include "./api/pixabayAPI.php"; 
-        $imgURLs = getImageURLs($_GET['keyword']); 
+        include "./api/pixabayAPI.php";
+        if($_GET['keyword'] == null && $_GET['category'] == null){
+            echo "select keyword by typing or using drop down menu";
+        }
+        elseif($_GET['keyword'] == null)
+        {
+            $imgURLs = getImageURLs($_GET['category'],$_GET['radio']);
+            $imgURLs = getImageURLs($_GET['keyword'],$_GET['radio']); 
+        }
+        else{
+        $imgURLs = getImageURLs($_GET['keyword'],$_GET['radio']); 
         $imgsToDisplay = getTenRandomImages($imgURLs); 
         // set random background image 
         $backgroundImage = $imgsToDisplay[array_rand($imgsToDisplay)]; 
+        }
     } 
 ?>
 <!DOCTYPE html>
@@ -79,7 +89,8 @@
             <input type="submit" value="Submit">
             
             <div>
-                <select name="keyword" id="drop-down" style:"color: black; font-size:1.5em">
+                <select name="category" id="drop-down" style:"color: black; font-size:1.5em">
+                    <option value>Select-One</option>
                     <option value="animal">Animal</option>
                     <option value="games">Games</option>
                     <option value="sports">Sports</option>
@@ -97,10 +108,17 @@
         </form>
         
         <?php
+        $keyword = $_POST['keyword'];
+        
         if(isset($_POST['submit'])){
-            $selected_val = $_POST['Keyword'];  // Storing Selected Value In Variable
-            echo "You have selected :" .$selected_val;  // Displaying Selected Value
-}
+ 
+            if(isset($_POST['radio']))
+            {
+                echo "You have selected :".$_POST['radio'];  //  Displaying Selected Value
+            }
+            $selected_val = $_POST['keyword'];  // Storing Selected Value In Variable
+            echo "You have selected :" .$selected_val;  // Displaying Selected Val
+        }
         ?>
         
         
