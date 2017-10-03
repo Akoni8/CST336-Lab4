@@ -14,6 +14,7 @@
         {
             $imgURLs = getImageURLs($_GET['category'],$_GET['radio']);
             $imgsToDisplay = getTenRandomImages($imgURLs); 
+            $backgroundImage = $imgsToDisplay[array_rand($imgsToDisplay)]; 
         }
         else{
         $imgURLs = getImageURLs($_GET['keyword'],$_GET['radio']); 
