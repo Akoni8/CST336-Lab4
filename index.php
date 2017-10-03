@@ -13,7 +13,7 @@
         elseif($_GET['keyword'] == null)
         {
             $imgURLs = getImageURLs($_GET['category'],$_GET['radio']);
-            $imgURLs = getImageURLs($_GET['keyword'],$_GET['radio']); 
+            $imgsToDisplay = getTenRandomImages($imgURLs); 
         }
         else{
         $imgURLs = getImageURLs($_GET['keyword'],$_GET['radio']); 
