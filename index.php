@@ -74,9 +74,36 @@
         ?>
         
         <form>
+ 
             <input type="text" name="keyword" placeholder="Keyword">
             <input type="submit" value="Submit">
+            
+            <div>
+                <select name="keyword" id="drop-down" style:"color: black; font-size:1.5em">
+                    <option value="animal">Animal</option>
+                    <option value="games">Games</option>
+                    <option value="sports">Sports</option>
+                    <option value="food">Food</option>
+                    <option value="school">School</option>
+                </select>
+            </div>
+            <div id="layoutDiv">
+                <input type="radio" name="layout" value="horizontal" id="layout_h"/>
+                <label for="layout_h">Horizontal</label>
+                </br>
+                <input type="radio" name="layout" value="vertical" id="layout_v"/>
+                <label for="layout_v">Vertical</label>
+            </div>
         </form>
+        
+        <?php
+        if(isset($_POST['submit'])){
+            $selected_val = $_POST['Keyword'];  // Storing Selected Value In Variable
+            echo "You have selected :" .$selected_val;  // Displaying Selected Value
+}
+        ?>
+        
+        
         
          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
